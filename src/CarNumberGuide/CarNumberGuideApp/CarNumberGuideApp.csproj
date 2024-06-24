@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Entity\" />
+    <Folder Include="Service\" />
+    <Folder Include="RDB\" />
+  </ItemGroup>
+
 </Project>
