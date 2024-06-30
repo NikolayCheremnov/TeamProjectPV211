@@ -10,7 +10,7 @@
 ## Навыки
 - C++
 - C#
-- Котлин
+- Kotlin
 
 ## Проекты
 - [Файловый мэнеджер на C++](https://disk.yandex.ru/d/gLu4N2-wuudwUg)
