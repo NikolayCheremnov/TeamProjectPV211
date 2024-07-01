@@ -1,24 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace CarNumberGuideApp.Entity
+﻿namespace CarNumberGuideApp.Entity
 {
     public class RegionNumber
     {
-        //код региона
-        private string code;
-        //сам регион
+        private string code;      
         private Region region;
 
-        public string Code { get { return code; } set { code = value; } }        
+        public string Code
+        {
+            get
+            {
+                return code;
+            }
+            set
+            {
+                code = value;
+            }
+        }      
         public Region Region
         {
-            get { return region; }
+            get
+            {
+                return region;
+            }
             set
             {
                 region = value;
@@ -26,8 +29,12 @@ namespace CarNumberGuideApp.Entity
         }
 
         public RegionNumber() => region = new Region();
-        public RegionNumber(string code) => this.code = code;
-        public RegionNumber(string code, Region region)
+        public RegionNumber(string code)
+        {
+            this.code = code;
+            region = new Region();
+        }
+            public RegionNumber(string code, Region region)
         {
             this.code = code;
             this.region = region;
