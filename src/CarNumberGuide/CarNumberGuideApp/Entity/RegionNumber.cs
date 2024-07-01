@@ -11,31 +11,37 @@ namespace CarNumberGuideApp.Entity
     internal class RegionNumber
     {
         private string regionNumber;
-        private Regex regex = new Regex(@"^[0-9]{2,3}$");
+        private Regex regex ;
 
         public RegionNumber() { }
         public RegionNumber(string regionNumber) {
-            MatchCollection mathes = regex.Matches(regionNumber);
-            if (mathes.Count > 0)
+            
+            if (СheckingNumberForValidity())
             {
                 this.regionNumber = regionNumber;
             }
             else
             {
-                Console.WriteLine("Вы ввели некорректный номер региона");
+                throw new ArgumentException("Вы ввели некорректный номер региона");
             }
         }
 
         public string GetRegionNumber() => regionNumber;
         public void SetRegionNumber(string regionNumber)
         {
-            MatchCollection mathes = regex.Matches(regionNumber);
-            if (mathes.Count > 0)
+            if (СheckingNumberForValidity())
             {
                 this.regionNumber = regionNumber;
             }
         }
 
         public override string ToString() => regionNumber + " RUS";
+
+        private bool СheckingNumberForValidity()
+        {
+            regex = new Regex(@"^[0-9]{2,3}$");
+            MatchCollection mathes = regex.Matches(regionNumber);
+            return mathes.Count > 0;
+        }
     }
 }

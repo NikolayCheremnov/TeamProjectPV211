@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace CarNumberGuideApp.Entity
 {
-    internal class RegionName
+    internal class Region
     {
+        public string Name { get;set }
         public HashSet <RegionNumber> RegionNumber { get; set; }
         public RegistrationNumber RegistrationNumber { get; set; }
-        public RegionName() { }
-        public RegionName(RegistrationNumber RegistrationNumber, RegionNumber RegionNumber) {
+
+        public Region() { }
+        public Region(RegistrationNumber RegistrationNumber, RegionNumber RegionNumber) {
             this.RegistrationNumber = RegistrationNumber;
             this.RegionNumber.Add(RegionNumber);
         }
