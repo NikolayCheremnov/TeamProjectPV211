@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarNumberGuideApp.Entity;
+using System;
 using System.Text.RegularExpressions;
 
 /// <summary>
@@ -6,42 +7,38 @@ using System.Text.RegularExpressions;
 /// </summary>
 public class RegistrationNumber
 {
-	private string regNumber;
-    public string RegNumber
+    //6символьный код
+    private string symbolicCode;
+    private RegionNumber regionNumber;
+
+    public string SymbolicCode { get { return symbolicCode; } set { symbolicCode = value; } }    
+    public RegionNumber RegionNumber
     {
         get
         {
-            return regNumber;
-        }
-        set
-        {
-            MatchCollection mathes = regex.Matches(value);
-            if (mathes.Count > 0)
+            if (regionNumber == null)
             {
-                this.regNumber = regNumber.ToUpper();
+                regionNumber = new RegionNumber();
+
             }
+            return regionNumber;
         }
+        set { regionNumber = value; }
     }
-    private Regex regex = new Regex(@"^[A-Za-z][0-9]{3}[A-Za-z]{2}$");
 
     public RegistrationNumber() { }
-    public RegistrationNumber(string regNumber)	{        
-        if (СheckingNumberForValidity())
-        {
-            this.regNumber = regNumber.ToUpper();
-        }
-        else {
-            throw new ArgumentException( $"Номерного знака {regNumber} не существует");
-        }
-    }
-
-    public override string ToString() => regNumber;
-
-    private bool СheckingNumberForValidity(string regNumber)
+    public RegistrationNumber(string symbolicCode)
     {
-        regex = new Regex(@"^[0-9]{2,3}$");
-        MatchCollection mathes = regex.Matches(regNumber);
-        return mathes.Count > 0;
+        this.symbolicCode = symbolicCode;
     }
+
+    public RegistrationNumber(string symbolicCode, RegionNumber region)
+    {
+        this.symbolicCode = symbolicCode;
+        this.regionNumber = region;
+    }
+
+
+    public override string ToString() => symbolicCode + RegionNumber.ToString();
 
 }

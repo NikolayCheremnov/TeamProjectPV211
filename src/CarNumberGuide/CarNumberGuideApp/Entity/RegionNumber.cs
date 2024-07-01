@@ -8,40 +8,32 @@ using System.Threading.Tasks;
 
 namespace CarNumberGuideApp.Entity
 {
-    internal class RegionNumber
+    public class RegionNumber
     {
-        private string regionNumber;
-        private Regex regex ;
+        //код региона
+        private string code;
+        //сам регион
+        private Region region;
 
-        public RegionNumber() { }
-        public RegionNumber(string regionNumber) {
-            
-            if (СheckingNumberForValidity())
-            {
-                this.regionNumber = regionNumber;
-            }
-            else
-            {
-                throw new ArgumentException("Вы ввели некорректный номер региона");
-            }
-        }
-
-        public string GetRegionNumber() => regionNumber;
-        public void SetRegionNumber(string regionNumber)
+        public string Code { get { return code; } set { code = value; } }        
+        public Region Region
         {
-            if (СheckingNumberForValidity())
+            get { return region; }
+            set
             {
-                this.regionNumber = regionNumber;
+                region = value;
             }
         }
 
-        public override string ToString() => regionNumber + " RUS";
-
-        private bool СheckingNumberForValidity()
+        public RegionNumber() => region = new Region();
+        public RegionNumber(string code) => this.code = code;
+        public RegionNumber(string code, Region region)
         {
-            regex = new Regex(@"^[0-9]{2,3}$");
-            MatchCollection mathes = regex.Matches(regionNumber);
-            return mathes.Count > 0;
+            this.code = code;
+            this.region = region;
         }
+
+        public override string ToString() => code + " RUS";
+
     }
 }

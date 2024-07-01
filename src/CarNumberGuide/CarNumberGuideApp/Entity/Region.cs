@@ -6,16 +6,34 @@ using System.Threading.Tasks;
 
 namespace CarNumberGuideApp.Entity
 {
-    internal class Region
+    public class Region
     {
-        public string Name { get;set }
-        public HashSet <RegionNumber> RegionNumber { get; set; }
-        public RegistrationNumber RegistrationNumber { get; set; }
+        //имя региона
+        private string name;
+        //множество кодов региона 2-3 знака
+        private HashSet<RegionNumber> regionNumbers;
+
+        public string Name { get { return name; } set { name = value; } }     
+        public HashSet<RegionNumber> RegionNumbers { get { return regionNumbers; } set { regionNumbers = value; } }
+        
 
         public Region() { }
-        public Region(RegistrationNumber RegistrationNumber, RegionNumber RegionNumber) {
-            this.RegistrationNumber = RegistrationNumber;
-            this.RegionNumber.Add(RegionNumber);
+        public Region(string name) {
+            this.name = name;
         }
+
+        public Region(string name, HashSet<RegionNumber> RegionNumbers)
+        {
+            this.name = name;
+            this.regionNumbers = RegionNumbers;
+        }
+
+        public override string ToString() {
+            string res = "";
+            //берет весь сет и запихивает в одну переменную что бы потом вывести в тустринге
+            res = string.Join("", RegionNumbers); 
+            return name + " - " + res;
+        }
+
     }
 }
