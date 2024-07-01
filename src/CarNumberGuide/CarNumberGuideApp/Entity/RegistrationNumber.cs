@@ -4,7 +4,7 @@
 
 public class RegistrationNumber
 {
-    
+
     private string symbolicCode;
     private RegionNumber regionNumber;
 
@@ -31,7 +31,11 @@ public class RegistrationNumber
         }
     }
 
-    public RegistrationNumber() => regionNumber = new RegionNumber();
+    public RegistrationNumber()
+    {
+        symbolicCode = String.Empty;
+        regionNumber = new RegionNumber();
+    }
     public RegistrationNumber(string symbolicCode)
     {
         this.symbolicCode = symbolicCode;

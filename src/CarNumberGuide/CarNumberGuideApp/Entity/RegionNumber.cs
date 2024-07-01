@@ -28,7 +28,11 @@
             }
         }
 
-        public RegionNumber() => region = new Region();
+        public RegionNumber()
+        {
+            code = string.Empty;
+            region = new Region();
+        }
         public RegionNumber(string code)
         {
             this.code = code;
@@ -40,7 +44,7 @@
             this.region = region;
         }
 
-        public override string ToString() => code + " RUS";
+        public override string ToString() => code ;
 
     }
 }

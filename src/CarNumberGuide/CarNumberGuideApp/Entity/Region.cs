@@ -30,8 +30,11 @@ namespace CarNumberGuideApp.Entity
             }
         }
 
-
-        public Region() => regionNumbers = new HashSet<RegionNumber>();
+        public Region()
+        {
+            name = string.Empty;
+            regionNumbers = new HashSet<RegionNumber>();
+        }
         public Region(string name)
         {
             this.name = name;
