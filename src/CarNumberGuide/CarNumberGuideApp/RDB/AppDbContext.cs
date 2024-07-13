@@ -23,7 +23,29 @@ namespace CarNumberGuideApp.RDB
             : base(options)
         {
            
-        }  
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DbRegion>()
+          .Property(r => r.Name)
+          .IsRequired() // Требование NOT NULL
+          .HasMaxLength(100); // Опционально, задает максимальную длину имени
+
+            modelBuilder.Entity<DbRegion>()
+                .HasIndex(r => r.Name)
+                .IsUnique();
+        }
     }
 }
 

@@ -15,8 +15,9 @@ namespace CarNumberGuideApp.RDB.DbEntities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
         public string SymbolicCode { get; set; }
-
+                
         public int RegionNumberId { get; set; } // Foreign Key
         public DbRegionNumber RegionNumber { get; set; } // Навигационное свойство
 

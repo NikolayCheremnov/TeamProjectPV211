@@ -1,4 +1,6 @@
 ﻿using CarNumberGuideApp.Entity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,13 +16,14 @@ namespace CarNumberGuideApp.RDB.DbEntities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        public  string Name { get; set; }
-
+        
+        [Required]
+        public string Name { get; set; }
         public required ICollection<DbRegionNumber> RegionNumbers
         {
             get; set;
         }
+
 
         public static Region MapToRegion(DbRegion dbRegion)
         {

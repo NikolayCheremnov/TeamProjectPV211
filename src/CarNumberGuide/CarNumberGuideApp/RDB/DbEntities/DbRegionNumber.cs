@@ -22,6 +22,7 @@ namespace CarNumberGuideApp.RDB.DbEntities
 
         public ICollection<DbRegistrationNumber> RegistrationNumbers { get; set; } = new HashSet<DbRegistrationNumber>();
 
+
         public static RegionNumber MapToRegionNumber(DbRegionNumber dbRegionNumber)
         {
             return new RegionNumber()
@@ -31,13 +32,13 @@ namespace CarNumberGuideApp.RDB.DbEntities
             };
         }
 
-        public static DbRegionNumber MapToDbRegionNumber(RegionNumber regionNumber, int regionId = 0)
+        public static DbRegionNumber MapToDbRegionNumber(RegionNumber regionNumber)
         {
             return new DbRegionNumber()
             {
-                Id = regionId,
+                
                 Code = regionNumber.Code,
-                RegionId = regionNumber.Region != null ? regionId : 0, // Assuming regionId is passed or calculated
+                
                 Region = DbRegion.MapToDbRegion(regionNumber.Region) 
             };
         }
